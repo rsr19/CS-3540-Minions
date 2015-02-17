@@ -7,6 +7,7 @@ TextureImporter:
     21300004: CursorFinger1
     21300006: CursorBack
     21300008: CursorHand
+    21300010: OptionsGear
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -95,6 +96,16 @@ TextureImporter:
         y: 1783
         width: 332
         height: 241
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: OptionsGear
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1717
+        width: 186
+        height: 188
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
