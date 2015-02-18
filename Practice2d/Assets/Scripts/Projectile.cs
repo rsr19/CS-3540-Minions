@@ -5,11 +5,13 @@ public class Projectile : MonoBehaviour {
 
 	private Transform destination;
 	private float speed;
+	private Vector3 location;
 
 	public void Initalize(Transform _destination, float _speed)
 	{
 		destination = _destination;
 		speed = _speed;
+		location = _destination.position;
 	}
 
 	// Use this for initialization
@@ -19,15 +21,17 @@ public class Projectile : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = Vector3.MoveTowards (transform.position, destination.position, Time.deltaTime * speed);
 
-		var distanceSquared = (destination.transform.position - transform.position).sqrMagnitude;
+		transform.position = Vector3.MoveTowards (transform.position, location , Time.deltaTime * speed);
 
-		if (distanceSquared > .01f * .01f) 
+
+	
+		if (transform.position == location) 
 		{
-			return;
+			Destroy(gameObject);
 		}
-		Destroy (gameObject);
+
+	
 	
 	}
 }

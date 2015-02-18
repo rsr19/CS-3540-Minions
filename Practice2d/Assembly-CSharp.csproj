@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Minions\TowerMinion.cs" />
      <Compile Include="Assets\Scripts\Projectile.cs" />
      <Compile Include="Assets\Scripts\Select.cs" />
+     <Compile Include="Assets\Scripts\gui\CursorScript.cs" />
      <Compile Include="Assets\SetTarget.cs" />
      <Compile Include="Assets\SpikeMinion.cs" />
  <Reference Include="UnityEngine.UI">
