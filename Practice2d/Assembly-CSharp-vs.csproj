@@ -50,9 +50,9 @@
      <Compile Include="Assets\HurtRigidboy.cs" />
      <Compile Include="Assets\ProjectileSpawn.cs" />
      <Compile Include="Assets\Scripts\Minions\PlayerControler.cs" />
+     <Compile Include="Assets\Scripts\Minions\Projectile.cs" />
+     <Compile Include="Assets\Scripts\Minions\Select.cs" />
      <Compile Include="Assets\Scripts\Minions\TowerMinion.cs" />
-     <Compile Include="Assets\Scripts\Projectile.cs" />
-     <Compile Include="Assets\Scripts\Select.cs" />
      <Compile Include="Assets\Scripts\gui\CursorScript.cs" />
      <Compile Include="Assets\SetTarget.cs" />
      <Compile Include="Assets\SpikeMinion.cs" />
