@@ -8,6 +8,7 @@ TextureImporter:
     21300006: CursorBack
     21300008: CursorHand
     21300010: OptionsGear
+    21300012: RadialSelection
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -67,7 +68,7 @@ TextureImporter:
         width: 94
         height: 80
       alignment: 9
-      pivot: {x: .671013355, y: .0862976089}
+      pivot: {x: .865375936, y: .410882562}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: CursorFinger1
       rect:
@@ -106,6 +107,16 @@ TextureImporter:
         y: 1717
         width: 186
         height: 188
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: RadialSelection
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 1735
+        width: 152
+        height: 153
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
