@@ -9,6 +9,7 @@ TextureImporter:
     21300008: CursorHand
     21300010: OptionsGear
     21300012: RadialSelection
+    21300014: HudLivesIcon
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -117,6 +118,16 @@ TextureImporter:
         y: 1735
         width: 152
         height: 153
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudLivesIcon
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 1507
+        width: 200
+        height: 182
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -19,8 +19,6 @@ public class TimerScript : MonoBehaviour {
 	//a variable for how long the reset timer will last
 	private float timeRemaining;
 
-	//a variable for the coroutine interval
-	private float interval;
 
 	//The start method
 	void Start()
@@ -29,10 +27,8 @@ public class TimerScript : MonoBehaviour {
 		timerCount = timerStart;
 
 		//set the reset timer
-		timeRemaining = 5;
-
-		//set the interval
-		interval = 1;
+		timeRemaining = 25;
+		
 	}
 
 	//the update method
@@ -40,7 +36,8 @@ public class TimerScript : MonoBehaviour {
 	{
 		//if the timer count is less than zero reload the level
 		if(timerCount < 0)
-			Application.LoadLevel (Application.loadedLevel);
+			//Application.LoadLevel (Application.loadedLevel);
+			ShowEnd();
 
 		//decrement the timer count
 		timerCount -= Time.deltaTime;
@@ -65,14 +62,13 @@ public class TimerScript : MonoBehaviour {
 		while(true)
 		{
 			//decrease the reset timer 
-			timeRemaining -= interval;
+			timeRemaining -= Time.deltaTime;
 
 			//when it reaches below zero reset the level
 			if(timeRemaining < 0)
 				Application.LoadLevel (Application.loadedLevel);
 
-			//
-			yield return new WaitForSeconds(interval);
+			yield return new WaitForSeconds(Time.deltaTime);
 		}
 	}
 }
