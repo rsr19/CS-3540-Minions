@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Hurt : MonoBehaviour {
 
+	//place the Prefab Explosion in this slot.	
+	public GameObject explosion;
 	// Use this for initialization
 	void Start () {
 	
@@ -12,6 +14,7 @@ public class Hurt : MonoBehaviour {
 		if (other.tag == "Minion")
 		{
 				
+			GameObject.Instantiate(explosion, other.transform.position, transform.rotation);	
 			Destroy (other.gameObject);
 		}
 

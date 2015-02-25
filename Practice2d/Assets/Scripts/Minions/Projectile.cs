@@ -3,13 +3,13 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour {
 
-	private Transform destination;
+	//private Transform destination;
 	private float speed;
 	private Vector3 location;
 
 	public void Initalize(Transform _destination, float _speed)
 	{
-		destination = _destination;
+	//	destination = _destination;
 		speed = _speed;
 		location = _destination.position;
 	}
