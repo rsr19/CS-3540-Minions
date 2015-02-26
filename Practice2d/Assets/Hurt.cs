@@ -16,11 +16,19 @@ public class Hurt : MonoBehaviour {
 				
 			GameObject.Instantiate(explosion, other.transform.position, transform.rotation);	
 			Destroy (other.gameObject);
+			respawn();
 		}
 
 
 	}
-	
+	void respawn()
+	{
+		GameObject[] spawnpoints = GameObject.FindGameObjectsWithTag ("SpawnPoint");
+		
+		Transform spawnpoint = spawnpoints [Random.Range (0, spawnpoints.Length)].transform;
+		
+		Instantiate (Resources.Load("Prefabs/Hero"), spawnpoint.position, Quaternion.identity);
+	}
 	// Update is called once per frame
 	void Update () {
 
