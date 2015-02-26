@@ -10,6 +10,7 @@ public class HeroAI : MonoBehaviour {
 	public Transform sightStart;
 	public Transform sightEnd;
 
+	public bool isJumping;
 	public bool colliding;
 	public RaycastHit2D hit;
 	public bool goFaster = false;
@@ -28,7 +29,11 @@ public class HeroAI : MonoBehaviour {
 		hit = Physics2D.Linecast (sightStart.position, sightEnd.position);
 		if (colliding)
 		{
+			if (isJumping == false)
 			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, jumpHeight);
+			isJumping = true;
+
+
 		}
 	}
 	void OnDrawGizmos()
@@ -40,16 +45,16 @@ public class HeroAI : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.tag == "Faster")
-			speedCoefficient = 2f;
+						speedCoefficient = 2f;
 			//velocity = fasterVelocity;
 		else if (collision.tag == "Slower")
-			velocity = 10f;
-		else if (collision.tag == "Hazard") 
-		{
-			lives--;
-			Destroy (gameObject);
-			respawn();
-		}
+						velocity = 10f;
+				else if (collision.tag == "Hazard") {
+						lives--;
+						Destroy (gameObject);
+						respawn ();
+				} else if (collision.tag == "Ground")
+						isJumping = false;
 	}
 	void respawn()
 	{
