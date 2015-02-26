@@ -11,7 +11,7 @@ public class Hurt : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.tag == "Minion" | other.tag == "Hazard")
+		if (other.tag == "Minion")
 		{
 				
 			GameObject.Instantiate(explosion, other.transform.position, transform.rotation);	
