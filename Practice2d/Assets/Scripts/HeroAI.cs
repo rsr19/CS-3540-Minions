@@ -32,8 +32,6 @@ public class HeroAI : MonoBehaviour {
 			if (isJumping == false)
 			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, jumpHeight);
 			isJumping = true;
-
-
 		}
 	}
 	void OnDrawGizmos()
@@ -42,6 +40,11 @@ public class HeroAI : MonoBehaviour {
 		Gizmos.DrawLine (sightStart.position, sightEnd.position);
 	}
 
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.transform.tag == "Ground")
+			isJumping = false;
+	}
 	void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.tag == "Faster")
@@ -53,8 +56,7 @@ public class HeroAI : MonoBehaviour {
 						lives--;
 						Destroy (gameObject);
 						respawn ();
-				} else if (collision.tag == "Ground")
-						isJumping = false;
+				}
 	}
 	void respawn()
 	{
