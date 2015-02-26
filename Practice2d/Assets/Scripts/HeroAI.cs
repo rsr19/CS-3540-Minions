@@ -5,7 +5,7 @@ public class HeroAI : MonoBehaviour {
 	public float velocity = 5f;
 	public float speedCoefficient = 1;
 	public float jumpHeight = 15f;
-	public float lives = 3;
+	public int lives = 1;
 
 	public Transform sightStart;
 	public Transform sightEnd;
@@ -15,10 +15,15 @@ public class HeroAI : MonoBehaviour {
 	public RaycastHit2D hit;
 	public bool goFaster = false;
 
+	public GameObject canvas;
+	public TimerScript timer;
+	public HudScript hud;
 
 	// Use this for initialization
 	void Start () {
-	
+		timer = canvas.GetComponent<TimerScript> ();
+		hud = canvas.GetComponent<HudScript> ();
+
 	}
 	
 	// Update is called once per frame
@@ -53,9 +58,12 @@ public class HeroAI : MonoBehaviour {
 		else if (collision.tag == "Slower")
 						velocity = 10f;
 				else if (collision.tag == "Hazard") {
-						lives--;
+						timer.DecreaseLives ();
 						Destroy (gameObject);
 						respawn ();
+				} else if (collision.tag == "Jumper")
+				{
+					rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, jumpHeight);
 				}
 	}
 	void respawn()
@@ -66,5 +74,6 @@ public class HeroAI : MonoBehaviour {
 	
 		Instantiate (Resources.Load("Prefabs/Hero"), spawnpoint.position, Quaternion.identity);
 	}
+
 
 }
