@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour {
+
+	public Image blackFade;
 
 	// Use this for initialization
 	/*void Start () {
@@ -13,8 +16,39 @@ public class MenuScript : MonoBehaviour {
 	
 	}*/
 
-	public void LoadScene(string _sceneName)
+	public void StartLoadScene(string _sceneName)
 	{
-		Application.LoadLevel(_sceneName);
+		StartCoroutine(LoadScene(_sceneName));
+	}
+
+	private IEnumerator LoadScene(string _sceneName)
+	{
+		if(blackFade != null)
+		{
+			blackFade.transform.gameObject.SetActive(true);
+			
+			blackFade.enabled = true;
+			
+			float trans = 0;
+			Color fadeColor = blackFade.color;
+			fadeColor.a = 0;
+			
+			while(trans < 1)
+			{
+				Debug.Log(trans);
+				
+				trans += Time.deltaTime;
+				
+				fadeColor.a = Mathf.Lerp(0, 1, trans);
+				
+				blackFade.color = fadeColor;
+
+				yield return null;
+			}
+			
+			Application.LoadLevel(_sceneName);
+
+			yield return null;
+		}
 	}
 }

@@ -6,9 +6,14 @@ public class HudScript : MonoBehaviour
 {
 	public Image[] lives;
 
+	public Image blackFade;
+
 	// Use this for initialization
 	void Start () {
 		SetLives(1);
+
+		StartCoroutine("LoadScene");
+
 	}
 	
 	// Update is called once per frame
@@ -30,5 +35,36 @@ public class HudScript : MonoBehaviour
 				lives[i].enabled = true;
 			}
 		}
+	}
+
+	private IEnumerator LoadScene()
+	{
+
+		if(blackFade != null)
+		{
+			blackFade.transform.gameObject.SetActive(true);
+			
+			blackFade.enabled = true;
+			
+			float trans = 0;
+			Color fadeColor = blackFade.color;
+			fadeColor.a = 1;
+			
+			while(trans < 1)
+			{
+				Debug.Log(trans);
+
+				trans += 1.5f * Time.deltaTime;
+				
+				fadeColor.a = Mathf.Lerp(1, 0, trans);
+				
+				blackFade.color = fadeColor;
+				
+				yield return null;
+			}
+			
+			yield return null;
+		}
+
 	}
 }
