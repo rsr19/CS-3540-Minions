@@ -63,6 +63,8 @@ public class HeroAI : MonoBehaviour {
 				{
 					rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, jumpHeight);
 				}
+		else if(collision.tag == "Goal")
+			timer.ShowGameOver();
 	}
 	void respawn()
 	{
