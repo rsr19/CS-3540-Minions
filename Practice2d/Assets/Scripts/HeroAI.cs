@@ -5,7 +5,6 @@ public class HeroAI : MonoBehaviour {
 	public float velocity = 5f;
 	public float speedCoefficient = 1;
 	public float jumpHeight = 15f;
-	public int lives = 1;
 
 	public Transform sightStart;
 	public Transform sightEnd;
@@ -15,14 +14,13 @@ public class HeroAI : MonoBehaviour {
 	public RaycastHit2D hit;
 	public bool goFaster = false;
 
-	public GameObject canvas;
+	private GameObject canvas;
 	public TimerScript timer;
-	public HudScript hud;
 
 	// Use this for initialization
 	void Start () {
+		canvas = GameObject.Find("Canvas");
 		timer = canvas.GetComponent<TimerScript> ();
-		hud = canvas.GetComponent<HudScript> ();
 
 	}
 	

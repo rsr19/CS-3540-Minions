@@ -19,6 +19,11 @@ public class TimerScript : MonoBehaviour {
 	//a variable for how long the reset timer will last
 	private float timeRemaining;
 
+	//the amount of lives there are
+	public int lives = 3;
+
+	//the hud script
+	private HudScript hud;
 
 	//The start method
 	void Start()
@@ -27,8 +32,14 @@ public class TimerScript : MonoBehaviour {
 		timerCount = timerStart;
 
 		//set the reset timer
-		timeRemaining = 25;
-		
+		timeRemaining = 1;
+
+		//get the hud script in order to change the number of icons on the hud
+		hud = this.transform.GetComponent<HudScript>();
+
+		//if the hud script was found set the current amount of lives
+		if(hud != null)
+			hud.SetLives(lives);
 	}
 
 	//the update method
@@ -43,7 +54,7 @@ public class TimerScript : MonoBehaviour {
 		timerCount -= Time.deltaTime;
 
 		//update the text to show the current time left
-		timerText.text = timerCount.ToString("F0");
+		timerText.text = timerCount.ToString("F2");
 	}
 
 	//a method for when the boss is beaten
@@ -70,5 +81,22 @@ public class TimerScript : MonoBehaviour {
 
 			yield return new WaitForSeconds(Time.deltaTime);
 		}
+	}
+
+	public void DecreaseLives()
+	{
+		//decrement the lives 
+		lives--;
+
+		//update the hud
+		if(hud != null)
+			hud.SetLives(lives);
+
+		//if there are no more lives then end the game
+		if(lives <= 0)
+		{
+			ShowEnd();
+		}
+			
 	}
 }
