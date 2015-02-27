@@ -54,17 +54,17 @@ TextureImporter:
         width: 32
         height: 33
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Minion with spikes_1
       rect:
         serializedVersion: 2
-        x: 227
-        y: 265
-        width: 45
-        height: 54
+        x: 234
+        y: 269
+        width: 36
+        height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Minion with spikes_2
       rect:
