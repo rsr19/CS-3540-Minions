@@ -17,6 +17,7 @@ public class HeroAI : MonoBehaviour {
 	private GameObject canvas;
 	public TimerScript timer;
 
+	public GameObject explosion;
 	// Use this for initialization
 	void Start () {
 		canvas = GameObject.Find("Canvas");
@@ -27,13 +28,13 @@ public class HeroAI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		rigidbody2D.velocity = new Vector2 (velocity * speedCoefficient, rigidbody2D.velocity.y);
+		GetComponent<Rigidbody2D>().velocity = new Vector2 (velocity * speedCoefficient, GetComponent<Rigidbody2D>().velocity.y);
 		colliding = Physics2D.Linecast (sightStart.position, sightEnd.position);
 		hit = Physics2D.Linecast (sightStart.position, sightEnd.position);
 		if (colliding)
 		{
 			if (isJumping == false)
-			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, jumpHeight);
+			GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
 			isJumping = true;
 		}
 	}
@@ -48,6 +49,7 @@ public class HeroAI : MonoBehaviour {
 		if (collision.transform.tag == "Ground")
 			isJumping = false;
 	}
+
 	void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.tag == "Faster")
@@ -58,16 +60,26 @@ public class HeroAI : MonoBehaviour {
 				else if (collision.tag == "Hazard") {
 						timer.DecreaseLives ();
 						Destroy (gameObject);
-						respawn ();
+						StartCoroutine(respawn ());
 				} else if (collision.tag == "Jumper")
 				{
-					rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, jumpHeight);
+					GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
 				}
 		else if(collision.tag == "Goal")
 			timer.ShowGameOver();
+		/*else if (collision.tag == "Minion")
+			{
+				Destroy (collision.gameObject);	
+				GameObject.Instantiate(explosion, collision.transform.position, transform.rotation);
+				timer.DecreaseLives ();
+				
+				StartCoroutine(respawn());
+			}*/
 	}
-	void respawn()
+	IEnumerator respawn()
 	{
+		yield return new WaitForSeconds(2);
+
 		GameObject[] spawnpoints = GameObject.FindGameObjectsWithTag ("SpawnPoint");
 	
 		Transform spawnpoint = spawnpoints [Random.Range (0, spawnpoints.Length)].transform;
