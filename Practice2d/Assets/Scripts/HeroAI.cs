@@ -27,13 +27,13 @@ public class HeroAI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		rigidbody2D.velocity = new Vector2 (velocity * speedCoefficient, rigidbody2D.velocity.y);
+		GetComponent<Rigidbody2D>().velocity = new Vector2 (velocity * speedCoefficient, GetComponent<Rigidbody2D>().velocity.y);
 		colliding = Physics2D.Linecast (sightStart.position, sightEnd.position);
 		hit = Physics2D.Linecast (sightStart.position, sightEnd.position);
 		if (colliding)
 		{
 			if (isJumping == false)
-			rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, jumpHeight);
+			GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
 			isJumping = true;
 		}
 	}
@@ -61,7 +61,7 @@ public class HeroAI : MonoBehaviour {
 						respawn ();
 				} else if (collision.tag == "Jumper")
 				{
-					rigidbody2D.velocity = new Vector2 (rigidbody2D.velocity.x, jumpHeight);
+					GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
 				}
 		else if(collision.tag == "Goal")
 			timer.ShowGameOver();

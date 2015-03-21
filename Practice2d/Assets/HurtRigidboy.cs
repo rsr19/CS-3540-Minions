@@ -25,6 +25,6 @@ public class HurtRigidboy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		velocity = rigidbody2D.velocity.x + rigidbody2D.velocity.y;
+		velocity = GetComponent<Rigidbody2D>().velocity.x + GetComponent<Rigidbody2D>().velocity.y;
 	}
 }

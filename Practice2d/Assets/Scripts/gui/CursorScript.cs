@@ -19,7 +19,7 @@ public class CursorScript : MonoBehaviour {
 	void Start () 
 	{
 		//turn off the computer cursor
-		Screen.showCursor = false;
+		Cursor.visible = false;
 		//get the sprite renderer from the highlight object
 		highLightRend = highlight.GetComponent<SpriteRenderer>();
 	}
