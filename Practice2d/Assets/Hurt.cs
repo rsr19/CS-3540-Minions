@@ -15,18 +15,19 @@ public class Hurt : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.tag == "Minion")
+		if (other.tag == "Hero")
 		{
 			GameObject.Instantiate(explosion, other.transform.position, transform.rotation);
 			timer.DecreaseLives ();
 			Destroy (other.gameObject);
-			respawn();
+			StartCoroutine(respawn());
 		}
 
 
 	}
-	void respawn()
+	IEnumerator respawn()
 	{
+		yield return new WaitForSeconds (2);
 		GameObject[] spawnpoints = GameObject.FindGameObjectsWithTag ("SpawnPoint");
 		
 		Transform spawnpoint = spawnpoints [Random.Range (0, spawnpoints.Length)].transform;
