@@ -1,9 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\HeroAI.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\gui\HudScript.cs">
     <Files>
-      <File FileName="Assets\Scripts\HeroAI.cs" Line="77" Column="7" />
-      <File FileName="Assets\Hurt.cs" Line="16" Column="2" />
+      <File FileName="Assets\Scripts\gui\HudScript.cs" Line="95" Column="4" />
+      <File FileName="Assets\Hurt.cs" Line="14" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
