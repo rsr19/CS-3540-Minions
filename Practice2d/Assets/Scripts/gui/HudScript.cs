@@ -22,9 +22,15 @@ public class HudScript : MonoBehaviour
 	void Start () {
 		//start the fading out
 		StartCoroutine("LoadScene");
+
+		Canvas canvas = GetComponent<Canvas>();
+		canvas.worldCamera = Camera.main;
+
 		lastTimeSinceStartup = 0;
 		countDownTxt.enabled = false;
 		Time.timeScale = 0;
+
+
 	}
 	
 	// Update is called once per frame

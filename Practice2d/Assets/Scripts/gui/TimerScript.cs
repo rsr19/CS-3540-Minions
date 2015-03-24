@@ -11,6 +11,8 @@ public class TimerScript : MonoBehaviour {
 	//the timer gui
 	public Text timerText;
 
+	public GameObject menuGrp;
+
 	//how long it lasts
 	public float timerStart;
 	//a variable to hold the decreasing time
@@ -63,11 +65,15 @@ public class TimerScript : MonoBehaviour {
 		//show the ending text
 		endText.gameObject.SetActive(true);
 		//start the countdown timer
-		StartCoroutine("EndPause");
+		//StartCoroutine("EndPause");
+
+		menuGrp.SetActive(true);
+		
+		Time.timeScale = 0;
 	}
 
 	//a coroutine for the remaining time before the level reloads
-	private IEnumerator EndPause()
+	/*private IEnumerator EndPause()
 	{
 		
 		while(true)
@@ -81,7 +87,7 @@ public class TimerScript : MonoBehaviour {
 
 			yield return new WaitForSeconds(Time.deltaTime);
 		}
-	}
+	}*/
 
 	public void DecreaseLives()
 	{
@@ -104,8 +110,22 @@ public class TimerScript : MonoBehaviour {
 	{
 		endText.text = "Game Over";
 
-		endText.gameObject.SetActive(true);
+		menuGrp.SetActive(true);
+
+		Time.timeScale = 0;
 		//start the countdown timer
-		StartCoroutine("EndPause");
+		//StartCoroutine("EndPause");
+	}
+
+	public void RetryClick()
+	{
+		Time.timeScale = 1;
+		Application.LoadLevel (Application.loadedLevel);
+	}
+
+	public void QuitClick()
+	{
+		Time.timeScale = 1;
+		Application.LoadLevel ("MainMenu");
 	}
 }

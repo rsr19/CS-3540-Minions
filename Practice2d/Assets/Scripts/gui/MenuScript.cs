@@ -17,9 +17,9 @@ public class MenuScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	/*void Update () {
 		Debug.Log(blackFade.gameObject.activeSelf);
-	}
+	}*/
 
 	public void PlayAnim(string _animName)
 	{
