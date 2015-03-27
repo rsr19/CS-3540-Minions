@@ -5,6 +5,7 @@ public class HeroAI : MonoBehaviour {
 	public float velocity = 5f;
 	public float speedCoefficient = 1;
 	public float jumpHeight = 15f;
+	public float round = 1;
 
 	public Transform sightStart;
 	public Transform sightEnd;
@@ -33,9 +34,43 @@ public class HeroAI : MonoBehaviour {
 		hit = Physics2D.Linecast (sightStart.position, sightEnd.position);
 		if (colliding)
 		{
+			// If hero is touching the ground, allow hit to jump
 			if (isJumping == false)
-			GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
-			isJumping = true;
+			{
+				if (round == 1)
+				{
+					if (hit.collider.tag == "Jumper1" | hit.collider.tag == "Ground")
+					{
+						GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
+						isJumping = true;
+					}
+				}
+
+				else if (round == 2)
+				{
+
+
+					if (hit.collider.tag == "Jumper2" | hit.collider.tag == "Ground")
+					{
+						Debug.Log ("Jump");
+						GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
+						isJumping = true;
+					}
+				}
+
+				else if (round == 3)
+				{
+					if (hit.collider.tag == "Jumper3" | hit.collider.tag == "Ground")
+					{
+						GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
+						isJumping = true;
+					}
+				}
+
+			//GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
+			//isJumping = true;
+
+			}
 		}
 	}
 	void OnDrawGizmos()
@@ -46,8 +81,19 @@ public class HeroAI : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
+		// Sets isJumping to 'false' when it touches the ground.
 		if (collision.transform.tag == "Ground")
 			isJumping = false;
+
+		// Kills Hero if hero hits any objects tagged as hazard
+		else if (collision.transform.tag == "Hazard") 
+		{
+			timer.DecreaseLives ();
+			Destroy (gameObject);
+			StartCoroutine(respawn ());
+		}
+
+
 	}
 
 	void OnTriggerEnter2D(Collider2D collision)
@@ -57,11 +103,8 @@ public class HeroAI : MonoBehaviour {
 			//velocity = fasterVelocity;
 		else if (collision.tag == "Slower")
 						velocity = 10f;
-				else if (collision.tag == "Hazard") {
-						timer.DecreaseLives ();
-						Destroy (gameObject);
-						StartCoroutine(respawn ());
-				} else if (collision.tag == "Jumper")
+				
+				 else if (collision.tag == "Jumper")
 				{
 					GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
 				}
