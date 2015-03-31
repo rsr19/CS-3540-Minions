@@ -10,7 +10,7 @@ public class destructible : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.tag == "Minion")
+		if (other.tag == "Minion" || other.tag == "Hero")
 						Destroy (gameObject);
 	}
 	

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class TowerTest : MonoBehaviour {
-	/*
+
 	public GameObject bullet;
 
 	// Use this for initialization
@@ -14,7 +14,7 @@ public class TowerTest : MonoBehaviour {
 	void Update () {
 
 		//if the player presses the left mouse button
-		if(Input.GetKeyDown(KeyCode.Mouse0) && Input.GetKeyDown (KeyCode.Space))
+		if(Input.GetMouseButtonDown (0) && Input.GetKey(KeyCode.Space))
 		{
 			//convert the mouse location to world location
 			Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
@@ -24,7 +24,7 @@ public class TowerTest : MonoBehaviour {
 			
 			//instantiate the bullet
 			GameObject obj = (GameObject)Instantiate(bullet, 
-			                                         new Vector2(transform.position.x + bulletDist * mouseDir.x, transform.position.y + bulletDist * mouseDir.y),
+			                                         new Vector2(transform.position.x * mouseDir.x, transform.position.y  * mouseDir.y),
 			                                         Quaternion.identity);
 			//set the direction of the bullet
 			obj.GetComponent<BulletScript2>().direction = mouseDir;
@@ -32,5 +32,5 @@ public class TowerTest : MonoBehaviour {
 
 	
 	}
-	*/
+
 }
