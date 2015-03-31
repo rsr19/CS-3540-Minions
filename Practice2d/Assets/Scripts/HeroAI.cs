@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 public class HeroAI : MonoBehaviour {
+	public bool Shield;
 	public TimerScript script;
 	public float velocity = 5f;
 	public float speedCoefficient = 1;
@@ -23,7 +24,7 @@ public class HeroAI : MonoBehaviour {
 	void Start () {
 		canvas = GameObject.Find("Canvas");
 		timer = canvas.GetComponent<TimerScript> ();
-
+		Shield = false;
 	}
 	
 	// Update is called once per frame
@@ -110,14 +111,28 @@ public class HeroAI : MonoBehaviour {
 				}
 		else if(collision.tag == "Goal")
 			timer.ShowGameOver();
-		/*else if (collision.tag == "Minion")
+		else if (collision.tag == "Minion")
 			{
-				Destroy (collision.gameObject);	
+				if(Shield)
+				{
+					Shield = false;
+					Destroy(collision.gameObject);
+				}
+			else{
+
+				Destroy (gameObject);	
 				GameObject.Instantiate(explosion, collision.transform.position, transform.rotation);
 				timer.DecreaseLives ();
 				
 				StartCoroutine(respawn());
-			}*/
+			}
+			}
+		if (collision.tag == "Shield") 
+		{
+			Shield = true;
+			Destroy(collision.gameObject);
+		}
+
 	}
 	IEnumerator respawn()
 	{
@@ -129,6 +144,9 @@ public class HeroAI : MonoBehaviour {
 	
 		Instantiate (Resources.Load("Prefabs/Hero"), spawnpoint.position, Quaternion.identity);
 	}
+
+	
+
 
 
 }
