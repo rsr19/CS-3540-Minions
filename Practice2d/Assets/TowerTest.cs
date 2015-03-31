@@ -24,7 +24,7 @@ public class TowerTest : MonoBehaviour {
 			
 			//instantiate the bullet
 			GameObject obj = (GameObject)Instantiate(bullet, 
-			                                         new Vector2(transform.position.x * mouseDir.x, transform.position.y  * mouseDir.y),
+			                                         new Vector2(transform.position.x, transform.position.y ),
 			                                         Quaternion.identity);
 			//set the direction of the bullet
 			obj.GetComponent<BulletScript2>().direction = mouseDir;
