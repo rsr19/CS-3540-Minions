@@ -8,7 +8,7 @@ public class HeroAI : MonoBehaviour {
 	public float velocity = 5f;
 	public float speedCoefficient = 1;
 	public float jumpHeight = 15f;
-	public float round = 1;
+	public static float round = 1;
 
 	public Transform sightStart;
 	public Transform sightEnd;
@@ -121,14 +121,13 @@ public class HeroAI : MonoBehaviour {
 					Destroy(collision.gameObject);
 					Destroy (obj);
 				}
-			else{
+				else
+				{
 
-				StartCoroutine(respawn());	
-				GameObject.Instantiate(explosion, transform.position, transform.rotation);
-				timer.DecreaseLives ();
-
-				Destroy (gameObject);
-			}
+					StartCoroutine(respawn());	
+					GameObject.Instantiate(explosion, transform.position, transform.rotation);
+					timer.DecreaseLives ();
+				}
 			}
 		if (collision.tag == "Shield") 
 		{
@@ -148,13 +147,16 @@ public class HeroAI : MonoBehaviour {
 	}
 	IEnumerator respawn()
 	{
-		yield return new WaitForSeconds(0.9f);
+		Debug.Log ("Working");
+		yield return new WaitForSeconds(0.5f);
+		Debug.Log ("Finished");
 		respawner();
 		Destroy(gameObject);
 	}
 
 	public void respawner()
 	{
+		round++;
 		Debug.Log("respawner");
 		GameObject[] spawnpoints = GameObject.FindGameObjectsWithTag ("SpawnPoint");
 		
