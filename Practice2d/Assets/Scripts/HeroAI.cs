@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 public class HeroAI : MonoBehaviour {
+	private GameObject obj;
+	public GameObject ShieldPickUp;
 	public bool Shield;
 	public TimerScript script;
 	public float velocity = 5f;
@@ -117,20 +119,30 @@ public class HeroAI : MonoBehaviour {
 				{
 					Shield = false;
 					Destroy(collision.gameObject);
+					Destroy (obj);
 				}
 			else{
 
 				StartCoroutine(respawn());	
-				GameObject.Instantiate(explosion, collision.transform.position, transform.rotation);
+				GameObject.Instantiate(explosion, transform.position, transform.rotation);
 				timer.DecreaseLives ();
 
-				//Destroy (gameObject);
+				Destroy (gameObject);
 			}
 			}
 		if (collision.tag == "Shield") 
 		{
 			Shield = true;
 			Destroy(collision.gameObject);
+		//	Instantiate(ShieldPickUp, transform.position, Quaternion.identity );
+
+			 obj = (GameObject)Instantiate(ShieldPickUp, 
+			                                         new Vector2(transform.position.x, transform.position.y ),
+			                                         Quaternion.identity);
+
+			//set the direction of the bullet
+			obj.GetComponent<ShieldScript>().Hero = gameObject;
+
 		}
 
 	}
