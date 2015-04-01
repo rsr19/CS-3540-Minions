@@ -57,6 +57,8 @@ public class HudScript : MonoBehaviour
 		}
 	}
 
+	//A method to add more
+
 	//a coroutine for fading out a black image
 	private IEnumerator LoadScene()
 	{
