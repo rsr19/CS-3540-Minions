@@ -120,11 +120,11 @@ public class HeroAI : MonoBehaviour {
 				}
 			else{
 
-				Destroy (gameObject);	
+				StartCoroutine(respawn());	
 				GameObject.Instantiate(explosion, collision.transform.position, transform.rotation);
 				timer.DecreaseLives ();
-				
-				StartCoroutine(respawn());
+
+				//Destroy (gameObject);
 			}
 			}
 		if (collision.tag == "Shield") 
@@ -136,16 +136,20 @@ public class HeroAI : MonoBehaviour {
 	}
 	IEnumerator respawn()
 	{
-		yield return new WaitForSeconds(2);
-
-		GameObject[] spawnpoints = GameObject.FindGameObjectsWithTag ("SpawnPoint");
-	
-		Transform spawnpoint = spawnpoints [Random.Range (0, spawnpoints.Length)].transform;
-	
-		Instantiate (Resources.Load("Prefabs/Hero"), spawnpoint.position, Quaternion.identity);
+		yield return new WaitForSeconds(0.9f);
+		respawner();
+		Destroy(gameObject);
 	}
 
-	
+	public void respawner()
+	{
+		Debug.Log("respawner");
+		GameObject[] spawnpoints = GameObject.FindGameObjectsWithTag ("SpawnPoint");
+		
+		Transform spawnpoint = spawnpoints [Random.Range (0, spawnpoints.Length)].transform;
+		
+		Instantiate (Resources.Load("Prefabs/Hero"), spawnpoint.position, Quaternion.identity);
+	}
 
 
 

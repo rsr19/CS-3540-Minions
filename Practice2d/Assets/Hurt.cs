@@ -15,13 +15,13 @@ public class Hurt : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.tag == "Hero")
+		/*if (other.tag == "Hero")
 		{
 			GameObject.Instantiate(explosion, other.transform.position, transform.rotation);
 			timer.DecreaseLives ();
 			Destroy (other.gameObject);
 			StartCoroutine(respawn());
-		}
+		}*/
 
 
 	}
