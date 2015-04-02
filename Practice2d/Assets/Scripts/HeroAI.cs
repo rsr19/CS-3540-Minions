@@ -42,7 +42,7 @@ public class HeroAI : MonoBehaviour {
 			{
 				if (round == 1)
 				{
-					if (hit.collider.tag == "Jumper1" | hit.collider.tag == "Ground")
+					if (hit.collider.tag == "Jumper1" || hit.collider.tag == "Ground" || hit.collider.tag == "Minion")
 					{
 						GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
 						isJumping = true;
@@ -53,7 +53,7 @@ public class HeroAI : MonoBehaviour {
 				{
 
 
-					if (hit.collider.tag == "Jumper2" | hit.collider.tag == "Ground")
+					if (hit.collider.tag == "Jumper2" || hit.collider.tag == "Ground" || hit.collider.tag == "Minion")
 					{
 						Debug.Log ("Jump");
 						GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
@@ -63,7 +63,7 @@ public class HeroAI : MonoBehaviour {
 
 				else if (round == 3)
 				{
-					if (hit.collider.tag == "Jumper3" | hit.collider.tag == "Ground")
+					if (hit.collider.tag == "Jumper3" || hit.collider.tag == "Ground" || hit.collider.tag == "Minion")
 					{
 						GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
 						isJumping = true;
@@ -91,9 +91,14 @@ public class HeroAI : MonoBehaviour {
 		// Kills Hero if hero hits any objects tagged as hazard
 		else if (collision.transform.tag == "Hazard") 
 		{
+			//timer.DecreaseLives ();
+			//Destroy (gameObject);
+			//StartCoroutine(respawn ());
+
+			StartCoroutine(respawn());	
+			GameObject.Instantiate(explosion, transform.position, transform.rotation);
 			timer.DecreaseLives ();
-			Destroy (gameObject);
-			StartCoroutine(respawn ());
+
 		}
 
 
@@ -156,7 +161,12 @@ public class HeroAI : MonoBehaviour {
 
 	public void respawner()
 	{
-		round++;
+		if (round < 4) {
+						round++;
+				}
+				else{
+		     round = 1;}
+
 		Debug.Log("respawner");
 		GameObject[] spawnpoints = GameObject.FindGameObjectsWithTag ("SpawnPoint");
 		
