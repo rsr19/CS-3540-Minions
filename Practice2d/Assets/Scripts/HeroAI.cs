@@ -152,8 +152,10 @@ public class HeroAI : MonoBehaviour {
 	}
 	IEnumerator respawn()
 	{
+
 		Debug.Log ("Working");
-		yield return new WaitForSeconds(0.5f);
+		//yield return new WaitForSeconds(0.5f);
+		yield return null;
 		Debug.Log ("Finished");
 		respawner();
 		Destroy(gameObject);
