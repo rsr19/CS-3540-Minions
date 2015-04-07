@@ -112,12 +112,15 @@ public class HeroAI : MonoBehaviour {
 		else if (collision.tag == "Slower")
 						velocity = 10f;
 				
-				 else if (collision.tag == "Jumper")
+				/* else if (collision.tag == "Jumper")
 				{
 					GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
-				}
+				}*/
 		else if(collision.tag == "Goal")
+		{
+			Debug.Log ("GameOver?");
 			timer.ShowGameOver();
+		}
 		else if (collision.tag == "Minion")
 			{
 				if(Shield)
