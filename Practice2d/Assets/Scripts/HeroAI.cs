@@ -85,7 +85,7 @@ public class HeroAI : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		// Sets isJumping to 'false' when it touches the ground.
-		if (collision.transform.tag == "Ground")
+		if (collision.transform.tag == "Ground" || collision.transform.tag == "Platform")
 			isJumping = false;
 
 		// Kills Hero if hero hits any objects tagged as hazard
@@ -106,17 +106,17 @@ public class HeroAI : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.tag == "Faster")
-						speedCoefficient = 2f;
+	//	if (collision.tag == "Faster")
+	//					speedCoefficient = 2f;
 			//velocity = fasterVelocity;
-		else if (collision.tag == "Slower")
-						velocity = 10f;
+	//	else if (collision.tag == "Slower")
+	//					velocity = 10f;
 				
 				/* else if (collision.tag == "Jumper")
 				{
 					GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, jumpHeight);
 				}*/
-		else if(collision.tag == "Goal")
+		 if(collision.tag == "Goal")
 		{
 			Debug.Log ("GameOver?");
 			timer.ShowGameOver();
@@ -166,7 +166,7 @@ public class HeroAI : MonoBehaviour {
 
 	public void respawner()
 	{
-		if (round < 4) {
+		if (round < 3) {
 						round++;
 				}
 				else{
