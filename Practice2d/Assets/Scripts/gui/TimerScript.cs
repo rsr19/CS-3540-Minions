@@ -62,6 +62,12 @@ public class TimerScript : MonoBehaviour {
 	//a method for when the boss is beaten
 	public void ShowEnd()
 	{
+		MenuScript menu = GameObject.Find("MenuLogic(Clone)").GetComponent<MenuScript>();
+
+		if(menu != null)
+		{
+			menu.SetNextLevelUnlock();
+		}
 		//show the ending text
 		endText.gameObject.SetActive(true);
 		//start the countdown timer
