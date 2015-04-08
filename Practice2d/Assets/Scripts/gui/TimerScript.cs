@@ -112,6 +112,14 @@ public class TimerScript : MonoBehaviour {
 			
 	}
 
+	public void IncreaseLives()
+	{
+		lives++;
+
+		if (hud != null)
+			hud.SetLives (lives);
+	}
+
 	public void ShowGameOver()
 	{
 		endText.text = "Game Over";

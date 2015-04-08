@@ -3,6 +3,7 @@ using System.Collections;
 public class HeroAI : MonoBehaviour {
 	private GameObject obj;
 	public GameObject ShieldPickUp;
+	public GameObject ExtraLife;
 	public bool Shield;
 	public TimerScript script;
 	public float velocity = 5f;
@@ -147,9 +148,15 @@ public class HeroAI : MonoBehaviour {
 			                                         new Vector2(transform.position.x, transform.position.y ),
 			                                         Quaternion.identity);
 
-			//set the direction of the bullet
+		
 			obj.GetComponent<ShieldScript>().Hero = gameObject;
 
+		}
+
+		if (collision.tag == "ExtraLife")
+		{
+			Destroy (collision.gameObject);
+			timer.IncreaseLives();
 		}
 
 	}

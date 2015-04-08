@@ -9,7 +9,7 @@ public class Falloff : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.tag == "Minion" | other.tag == "Hazard")
+		if (other.tag == "Minion" || other.tag == "Hero")
 		{
 			
 				
