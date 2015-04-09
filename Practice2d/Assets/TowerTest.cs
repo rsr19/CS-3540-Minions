@@ -4,18 +4,30 @@ using System.Collections;
 public class TowerTest : MonoBehaviour {
 
 	public GameObject bullet;
+	public float fireRate;
+	
+	private float nextShotInSeconds;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+	{
+		nextShotInSeconds = fireRate;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+
+		if ((nextShotInSeconds -= Time.deltaTime) > 0) 
+		{
+			return;
+		}
+
 		//if the player presses the left mouse button
 		if(Input.GetMouseButtonDown (0) && Input.GetKey(KeyCode.Space))
 		{
+			nextShotInSeconds = fireRate;
+
 			//convert the mouse location to world location
 			Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 			
