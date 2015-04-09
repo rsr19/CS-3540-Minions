@@ -15,7 +15,7 @@ public class CameraScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-
+		//get the scroll boundaries
 		scrollBoundary.x = (scrollBoundaryinPercent.x / 100) * Screen.width;
 		scrollBoundary.y = (scrollBoundaryinPercent.x / 100) * Screen.height;
 		scrollBoundary.width = (scrollBoundaryinPercent.width / 100) * Screen.width;
@@ -26,7 +26,7 @@ public class CameraScript : MonoBehaviour {
 	void Update () 
 	{
 		currentPos = transform.position;
-
+		//if the mouse is on the game screen
 		if(Input.mousePosition.x > 0 && Input.mousePosition.x < Screen.width && Input.mousePosition.y > 0 && Input.mousePosition.y < Screen.height)
 		{
 			if(!lockX)

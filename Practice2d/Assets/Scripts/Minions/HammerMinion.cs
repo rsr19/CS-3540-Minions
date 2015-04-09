@@ -17,7 +17,7 @@ public class HammerMinion : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		if(!anim.GetCurrentAnimatorStateInfo(0).IsName("HammerLeft"))
+		if(anim.GetCurrentAnimatorStateInfo(0).IsName("HammerStill"))
 			anim.Play("HammerLeft");
 		
 	}

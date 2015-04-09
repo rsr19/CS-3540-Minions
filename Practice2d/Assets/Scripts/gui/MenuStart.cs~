@@ -18,7 +18,6 @@ public class MenuStart : MonoBehaviour {
 		{
 			menu = (GameObject)Instantiate(Resources.Load("Prefabs/Gui/MenuLogic"), Vector3.zero, Quaternion.identity);
 			menuScript = menu.GetComponent<MenuScript>();
-			//menu.GetLevels();
 		}
 		else
 		{
@@ -27,16 +26,7 @@ public class MenuStart : MonoBehaviour {
 
 
 	}
-	
-	// Update is called once per frame
-	/*void Update () {
-	
-	}*/
 
-	/*public static Button[] GetButtons()
-	{
-		return this.buttons;
-	}*/
 
 	public void StartLoadLevel(int _levelIndex)
 	{

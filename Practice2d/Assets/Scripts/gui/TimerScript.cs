@@ -10,6 +10,8 @@ public class TimerScript : MonoBehaviour {
 	public Text endText;
 	//the timer gui
 	public Text timerText;
+	public Button retryButton;
+	public Button nextButton;
 
 	public GameObject menuGrp;
 
@@ -26,6 +28,8 @@ public class TimerScript : MonoBehaviour {
 
 	//the hud script
 	private HudScript hud;
+	GameObject menuObj;
+	MenuScript menuScript;
 
 	//The start method
 	void Start()
@@ -42,6 +46,11 @@ public class TimerScript : MonoBehaviour {
 		//if the hud script was found set the current amount of lives
 		if(hud != null)
 			hud.SetLives(lives);
+
+		menuObj = GameObject.Find("MenuLogic(Clone)");
+
+		if(menuObj != null)
+			menuScript = menuObj.GetComponent<MenuScript>();
 	}
 
 	//the update method
@@ -62,38 +71,25 @@ public class TimerScript : MonoBehaviour {
 	//a method for when the boss is beaten
 	public void ShowEnd()
 	{
-		MenuScript menu = GameObject.Find("MenuLogic(Clone)").GetComponent<MenuScript>();
+		//GameObject menuObj = GameObject.Find("MenuLogic(Clone)");
 
-		if(menu != null)
+		if(menuScript != null)
 		{
-			menu.SetNextLevelUnlock();
+			menuScript.SetNextLevelUnlock();
 		}
+
 		//show the ending text
 		endText.gameObject.SetActive(true);
-		//start the countdown timer
-		//StartCoroutine("EndPause");
+
+		//show the next level button
+		nextButton.gameObject.SetActive(true);
+		retryButton.gameObject.SetActive(false);
 
 		menuGrp.SetActive(true);
-		
+
+		//pause everything
 		Time.timeScale = 0;
 	}
-
-	//a coroutine for the remaining time before the level reloads
-	/*private IEnumerator EndPause()
-	{
-		
-		while(true)
-		{
-			//decrease the reset timer 
-			timeRemaining -= Time.deltaTime;
-
-			//when it reaches below zero reset the level
-			if(timeRemaining < 0)
-				Application.LoadLevel (Application.loadedLevel);
-
-			yield return new WaitForSeconds(Time.deltaTime);
-		}
-	}*/
 
 	public void DecreaseLives()
 	{
@@ -112,6 +108,7 @@ public class TimerScript : MonoBehaviour {
 			
 	}
 
+	//a method to increase the lives
 	public void IncreaseLives()
 	{
 		lives++;
@@ -120,26 +117,41 @@ public class TimerScript : MonoBehaviour {
 			hud.SetLives (lives);
 	}
 
+	//A method to show the game over menu
 	public void ShowGameOver()
 	{
 		endText.text = "Game Over";
 
+		//show the retry button
+		nextButton.gameObject.SetActive(false);
+		retryButton.gameObject.SetActive(true);
+
 		menuGrp.SetActive(true);
 
 		Time.timeScale = 0;
-		//start the countdown timer
-		//StartCoroutine("EndPause");
 	}
 
+	//replay the current level
 	public void RetryClick()
 	{
 		Time.timeScale = 1;
 		Application.LoadLevel (Application.loadedLevel);
 	}
 
+	//go back to the menu
 	public void QuitClick()
 	{
 		Time.timeScale = 1;
 		Application.LoadLevel ("MainMenu");
+	}
+
+	//go to the next level
+	public void NextLevelClick()
+	{
+		if(menuScript != null && menuScript.Currentlevel + 1 < menuScript.levelNames.Length)
+		{
+			menuScript.IncrementLevel();
+			Application.LoadLevel(menuScript.levelNames[menuScript.Currentlevel]);
+		}
 	}
 }

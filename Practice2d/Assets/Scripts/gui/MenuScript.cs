@@ -17,6 +17,7 @@ public class MenuScript : MonoBehaviour {
 	public string[] levelNames;
 
 	private int currentLevel;
+	public int Currentlevel{get{return currentLevel;}}
 
 	public enum MenuSelect {Main, Level, Options};
 	public MenuSelect selectedMenu;
@@ -51,50 +52,18 @@ public class MenuScript : MonoBehaviour {
 		}
 	}
 
-	/*public void GetLevels()
-	{
-		isUnlocked = new bool[levelButtons.Length];
-		for(int i = 0; i < isUnlocked.Length; i++)
-			isUnlocked[i] = false;
-		
-		isUnlocked[0] = true;
-		
-		selectedMenu = MenuSelect.Main;
-		
-		SetButtons();
-	}*/
-	
-	// Update is called once per frame
-	/*void Update () {
-		Debug.Log(blackFade.gameObject.activeSelf);
-	}*/
-
-
+	//a method to play animations
 	public void PlayAnim(string _animName)
 	{
 		anim.Play(_animName);
 	}
-
-	//a function that starts the fading effect
-	/*public void StartLoadScene(string _sceneName)
-	{
-
-		StartCoroutine(LoadScene(_sceneName));
-	}*/
-
+	
 	void OnLevelWasLoaded()
 	{
 		if(Application.loadedLevelName == "MainMenu")
 		{
-			/*switch(selectedMenu)
-			{
-			case MenuSelect.Main:
 
-				break;
-			case MenuSelect.Level:
-				break;
-			}*/
-
+			//get the fade object
 			GameObject fadeObject = GameObject.Find("BlackFade");
 
 			if(fadeObject != null)
@@ -105,7 +74,7 @@ public class MenuScript : MonoBehaviour {
 
 			levelButtons = MenuStart.Instance.buttons; 
 
-			//levelGrp.transform.chi
+			//enable the levels that the player can play
 			SetButtons();
 		}
 	}
@@ -120,13 +89,11 @@ public class MenuScript : MonoBehaviour {
 	//a coroutine for the fading effect
 	private IEnumerator LoadScene()
 	{
-		Debug.Log("hey " + levelNames[currentLevel]);
+
 		//if the blackFade object has been set
 		if(blackFade != null)
 		{
-			//Debug.Log(blackFade.gameObject.activeSelf);
-			//enable the blackFade and it's image just in case the arn't enabled
-			//blackFade.gameObject.SetActive(true);
+
 			blackFade.enabled = true;
 			
 			//a variable for the lerp
@@ -139,8 +106,6 @@ public class MenuScript : MonoBehaviour {
 			//while trans is less than 1
 			while(trans < 1)
 			{
-				//blackFade.gameObject.SetActive(true);
-				//blackFade.enabled = true;
 
 				//add the delta time to the incrementing variable
 				trans += Time.deltaTime;
@@ -153,7 +118,7 @@ public class MenuScript : MonoBehaviour {
 
 				yield return null;
 			}
-			Debug.Log(levelNames[currentLevel]);
+
 			//once the blackFade is done transitioning load the specified level
 			Application.LoadLevel(levelNames[currentLevel]);
 
@@ -161,41 +126,43 @@ public class MenuScript : MonoBehaviour {
 		}
 	}
 
+	//a method to enable level buttons
 	private void SetButtons()
 	{
-		/*for(int i = 0; i < levelButtons.Length; i++)
+		for(int i = 0; i < levelButtons.Length; i++)
 		{
-			//Debug.Log()
 			levelButtons[i].interactable = isUnlocked[i];
-		}*/
+		}
 	}
 
-/*	private struct Level
-	{
-		public string LevelName{get;set;}
-		public bool IsUnlocked{get;set;}
-		public Button LevelButton{get;set;}
-	}*/
-
+	//a method to unlock the next level
 	public void SetNextLevelUnlock()
 	{
-		isUnlocked[currentLevel++] = true;
+
+		if(currentLevel + 1 < isUnlocked.Length)
+			isUnlocked[currentLevel + 1] = true;
 	}
 
+	//a method to lock the next level
 	public void SetNextLevelLock()
 	{
-		isUnlocked[currentLevel++] = false;
+		if(currentLevel + 1 < isUnlocked.Length)
+			isUnlocked[currentLevel + 1] = false;
 	}
 
+	//check a button to see if its unlocked
 	public bool CheckButtonUnlock(int _index)
 	{
-		return isUnlocked[_index];
+		if(currentLevel < isUnlocked.Length)
+			return isUnlocked[_index];
+
+		return false;
+	}
+
+	//increment the current level
+	public void IncrementLevel()
+	{
+		currentLevel++;
 	}
 }
 
-/*public struct Level
-{
-	public string LevelName{get;set;}
-	public bool IsUnlocked{get;set;}
-	public Button LevelButton{get;set;}
-}*/

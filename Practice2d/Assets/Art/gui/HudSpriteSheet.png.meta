@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 035154231e6fdf24faaf9cbcfd15e446
+timeCreated: 1428539221
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: CursorFinger3
@@ -10,6 +12,20 @@ TextureImporter:
     21300010: OptionsGear
     21300012: RadialSelection
     21300014: HudLivesIcon
+    21300016: HudSpriteSheet_0
+    21300018: HudSpriteSheet_1
+    21300020: HudSpriteSheet_2
+    21300022: HudSpriteSheet_3
+    21300024: HudSpriteSheet_4
+    21300026: HudSpriteSheet_5
+    21300028: HudSpriteSheet_6
+    21300030: HudSpriteSheet_7
+    21300032: HudSpriteSheet_8
+    21300034: HudSpriteSheet_9
+    21300036: HudSpriteSheet_10
+    21300038: HudSpriteSheet_11
+    21300040: HudSpriteSheet_12
+    21300042: HudSpriteSheet_13
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -132,6 +148,146 @@ TextureImporter:
         y: 1507
         width: 200
         height: 182
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 1772
+        width: 234
+        height: 231
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 1772
+        width: 234
+        height: 214
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1429
+        y: 1789
+        width: 234
+        height: 197
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 1707
+        y: 1774
+        width: 215
+        height: 214
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 1528
+        width: 229
+        height: 228
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 1528
+        width: 228
+        height: 203
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 1396
+        y: 1528
+        width: 77
+        height: 228
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 1497
+        y: 1602
+        width: 153
+        height: 153
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 1603
+        width: 142
+        height: 142
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 1278
+        width: 234
+        height: 234
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 1278
+        width: 235
+        height: 234
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 1449
+        y: 1276
+        width: 194
+        height: 228
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 1712
+        y: 1292
+        width: 148
+        height: 201
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HudSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 1118
+        width: 191
+        height: 139
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

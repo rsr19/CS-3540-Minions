@@ -62,8 +62,11 @@ public class CursorScript : MonoBehaviour {
 						//set the target of the highlight object from the minion
 						highlight.GetComponent<HighLightScript>().target = hit.transform;
 						//scale the hightlight to be slightly bigger than the minion
-						//highlight.transform.localScale = new Vector3(hit.transform.localScale.x + 0.2f, hit.transform.localScale.y + 0.2f, 1f);
-						highlight.transform.localScale = new Vector3(hit.transform.localScale.x * highlight.transform.localScale.x, hit.transform.localScale.y * highlight.transform.localScale.y, 1f);
+						float newX = hit.transform.localScale.x / 100;
+						float newY = hit.transform.localScale.y / 100;
+						//highlight.transform.localScale = new Vector3(hit.transform.localScale.x + 0.01f, hit.transform.localScale.y + 0.01f, 1f);
+						highlight.transform.localScale = new Vector3(newX * 50, newY * 50, 1f);
+						//highlight.transform.localScale = new Vector3(hit.transform.localScale.x * highlight.transform.localScale.x, hit.transform.localScale.y * highlight.transform.localScale.y, 1f);
 					}
 				}
 				//if what was clicked on wasn't a minion then set the hightlight target to null

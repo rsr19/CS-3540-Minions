@@ -12,7 +12,6 @@ public class ButtonUnlock : MonoBehaviour
 
 		MenuScript menu = MenuScript.Instance;
 
-		//button.interactable = menu.CheckButtonUnlock(levelNum);
 	}
 	
 	// Update is called once per frame
