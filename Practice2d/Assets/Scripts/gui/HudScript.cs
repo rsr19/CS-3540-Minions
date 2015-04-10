@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -43,6 +43,7 @@ public class HudScript : MonoBehaviour
 	//a function to change the amount of icons for the lives
 	public void SetLives(int _amt)
 	{
+
 		//turn all of the icons off
 		foreach(Image _img in lives)
 			_img.enabled = false;

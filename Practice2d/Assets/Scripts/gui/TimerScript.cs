@@ -148,10 +148,10 @@ public class TimerScript : MonoBehaviour {
 	//go to the next level
 	public void NextLevelClick()
 	{
-		if(menuScript != null && menuScript.Currentlevel + 1 < menuScript.levelNames.Length)
+		if(menuScript != null )
 		{
-			menuScript.IncrementLevel();
-			Application.LoadLevel(menuScript.levelNames[menuScript.Currentlevel]);
+
+			menuScript.GoToNextLevel();
 		}
 	}
 }

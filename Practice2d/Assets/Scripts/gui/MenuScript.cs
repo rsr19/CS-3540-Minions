@@ -16,8 +16,8 @@ public class MenuScript : MonoBehaviour {
 	private bool[] isUnlocked;
 	public string[] levelNames;
 
-	private int currentLevel;
-	public int Currentlevel{get{return currentLevel;}}
+	//private int currentLevel;
+	public int CurrentLevel{get;set;}
 
 	public enum MenuSelect {Main, Level, Options};
 	public MenuSelect selectedMenu;
@@ -29,7 +29,7 @@ public class MenuScript : MonoBehaviour {
 		Instance = this;
 		DontDestroyOnLoad(transform.gameObject);
 		anim = GetComponent<Animator>();
-		currentLevel = 0;
+		CurrentLevel = 0;
 
 		levelButtons = MenuStart.Instance.buttons;
 
@@ -81,7 +81,7 @@ public class MenuScript : MonoBehaviour {
 
 	public void StartLoadLevel(int _levelIndex)
 	{
-		currentLevel = _levelIndex;
+		CurrentLevel = _levelIndex;
 
 		StartCoroutine("LoadScene");
 	}
@@ -120,7 +120,7 @@ public class MenuScript : MonoBehaviour {
 			}
 
 			//once the blackFade is done transitioning load the specified level
-			Application.LoadLevel(levelNames[currentLevel]);
+			Application.LoadLevel(levelNames[CurrentLevel]);
 
 			yield return null;
 		}
@@ -139,30 +139,42 @@ public class MenuScript : MonoBehaviour {
 	public void SetNextLevelUnlock()
 	{
 
-		if(currentLevel + 1 < isUnlocked.Length)
-			isUnlocked[currentLevel + 1] = true;
+		if(CurrentLevel + 1 < isUnlocked.Length)
+			isUnlocked[CurrentLevel + 1] = true;
 	}
 
 	//a method to lock the next level
 	public void SetNextLevelLock()
 	{
-		if(currentLevel + 1 < isUnlocked.Length)
-			isUnlocked[currentLevel + 1] = false;
+		if(CurrentLevel + 1 < isUnlocked.Length)
+			isUnlocked[CurrentLevel + 1] = false;
 	}
 
 	//check a button to see if its unlocked
 	public bool CheckButtonUnlock(int _index)
 	{
-		if(currentLevel < isUnlocked.Length)
+		if(CurrentLevel < isUnlocked.Length)
 			return isUnlocked[_index];
 
 		return false;
 	}
 
 	//increment the current level
-	public void IncrementLevel()
+	/*public void IncrementLevel()
 	{
 		currentLevel++;
+	}*/
+
+	public void GoToNextLevel()
+	{
+		if(CurrentLevel + 1 < levelNames.Length)
+		{
+			Application.LoadLevel(levelNames[++CurrentLevel]);
+		}
+		else
+		{
+			Application.LoadLevel("MainMenu");
+		}
 	}
 }
 
