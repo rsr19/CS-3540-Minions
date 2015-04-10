@@ -13,7 +13,7 @@ public class Death : MonoBehaviour {
 
 
 	void OnCollisionEnter2D(Collision2D other) {
-				if (other.gameObject.tag != "Ground") {
+				if (other.gameObject.tag == "Minion" || other.gameObject.tag == "Hazard" || other.gameObject.tag == "Hero") {
 						GameObject.Instantiate (Smoke, transform.position, transform.rotation);
 
 						Destroy (gameObject);
