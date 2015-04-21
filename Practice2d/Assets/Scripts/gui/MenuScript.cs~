@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -167,9 +166,6 @@ public class MenuScript : MonoBehaviour {
 
 	public void GoToNextLevel()
 	{
-		Debug.Log("CurrentLevel + 1 " + (CurrentLevel + 1));
-		Debug.Log("levelNames.Length " + levelNames.Length);
-		Debug.Log("levelNames[++CurrentLevel] " + levelNames[CurrentLevel + 1]);
 		if(CurrentLevel + 1 < levelNames.Length)
 		{
 			Application.LoadLevel(levelNames[++CurrentLevel]);
