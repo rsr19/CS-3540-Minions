@@ -80,6 +80,7 @@ public class MenuScript : MonoBehaviour {
 
 	public void StartLoadLevel(int _levelIndex)
 	{
+
 		CurrentLevel = _levelIndex;
 
 		StartCoroutine("LoadScene");
@@ -88,7 +89,7 @@ public class MenuScript : MonoBehaviour {
 	//a coroutine for the fading effect
 	private IEnumerator LoadScene()
 	{
-
+		Debug.Log("it works");
 		//if the blackFade object has been set
 		if(blackFade != null)
 		{
